@@ -43,7 +43,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void deleteStudent(long id) {
-        Student student = repository.findById(id).orElseThrow(() -> new StudentNotFoundException("Student", "id", id));
+        Student student = repository.findById(id).orElseThrow(() -> new StudentNotFoundException(id));
         repository.delete(student);
 
     }
