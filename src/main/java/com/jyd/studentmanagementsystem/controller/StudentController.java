@@ -6,10 +6,7 @@ import com.jyd.studentmanagementsystem.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -30,5 +27,11 @@ public class StudentController {
     public ResponseEntity<List<StudentDto>> getAllStudent(){
 
         return new ResponseEntity<>(studentService.getAllStudents(), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("api/student/{id}")
+    public void deleteStudent(@PathVariable(name = "id") long id){
+        studentService.deleteStudent(id);
+
     }
 }
